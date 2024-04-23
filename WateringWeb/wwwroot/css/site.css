@@ -1,0 +1,98 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+#status-circle.running {
+    animation: blink 1s infinite;
+    animation-delay: 0.5s;
+}
+
+#status-circle.standby {
+    background-color: green;
+    animation : none;
+}
+
+#status-circle.disconnected {
+    display: none;
+}
+
+#startup-button {
+    background-color: #008CBA;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+#watering-time {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#end-time {
+    padding: 8px;
+    width: calc(50% - 10px);
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+    #end-time::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    #end-time-webkit-datetime-edit-fields-wrapper {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 6px;
+    }
+
+    #end-time-webkit-datetime-edit {
+        color: #333;
+        font-size: 16px;
+    }
+
+    #end-time::-webkit-inner-spin-button {
+        display: none;
+    }
+
+

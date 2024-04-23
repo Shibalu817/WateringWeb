@@ -1,0 +1,67 @@
+﻿@page "/test1"
+@model WateringWeb.Pages.testIndex1Model
+@{
+
+}
+
+<head>
+
+    <style>
+
+          
+
+        .watering-status {
+            display: flex; /* 使用彈性布局 */
+            align-items: center; /* 垂直居中對齊子元素 */
+        }
+
+        #status-circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: @Model.StatusColor;
+            margin-left: 5px; /* 添加一些右邊距，與文字分開 */
+            animation: blink 1s infinite;     
+        }
+
+        #status-text {
+            display: inline-block;
+            vertical-align: middle; /* 垂直居中對齊 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watering-status">
+        <div id="status-text">灑水器狀態：@Model.WateringStatus</div>
+        <div id="status-circle"
+             class="@(Model.WateringStatus == "運轉中" ? "running" : (Model.WateringStatus == "待機" ? "standby" : "disconnected"))">
+        </div>
+
+        @if (Model.WateringStatus == "待機")
+        {
+            <button id="startup-button">強制啟動</button>
+        }
+        else if (Model.WateringStatus == "運轉中")
+        {
+            <button id="startup-button">強制停止</button>
+        }
+    </div>
+
+    <!-- 添加设置灑水时间的区域 -->
+    <div id="watering-time">
+        <h2>設定今日灑水時間</h2>
+        <form>
+            <label for="start-time">開始時間：</label>
+            <input type="time" id="start-time" name="start-time">
+            <label for="end-time">結束時間：</label>
+            <input type="time" id="end-time" name="end-time">
+            <label for="status">狀態：</label>
+            <select id="status" name="status">
+                <option value="運轉中">運轉中</option>
+                <option value="待機">待機</option>
+            </select>
+            <button type="submit">確定</button>
+        </form>
+    </div>
+</body>
